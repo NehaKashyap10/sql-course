@@ -18,5 +18,16 @@ FROM
 WHERE a.[type]= 'large_airport'
     AND a.continent ='EU'
     AND a.iso_country IN ('GB','FR')
-    AND a.latitude_deg between 51 and 54
+ ---   AND a.latitude_deg between 51 and 54
 ORDER BY a.name 
+
+
+
+SELECT
+    TOP 5
+    a.iso_country
+    ,count(*) AS total_airports
+FROM
+    airports a
+GROUP BY a.iso_country
+ORDER BY count(*) DESC
